@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BiologicalReconstructorsScannerInfo\BiologicalReconstructorsScannersPlus.csproj">
+    <ProjectReference Include="..\BiologicalReconstructorsScannersPlus\BiologicalReconstructorsScannersPlus.csproj">
       <Private>false</Private>
     </ProjectReference>
   </ItemGroup>

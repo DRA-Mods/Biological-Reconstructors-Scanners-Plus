@@ -9,11 +9,11 @@ namespace BiologicalReconstructorsScannersPlus
     {
         public BiologicalReconstructorsScannersPlusMod(ModContentPack content) : base(content)
         {
-            var harmony = new Harmony("Dra.BiologicalReconstructorsScannerInfo");
+            var harmony = new Harmony("Dra.BiologicalReconstructorsScannersPlus");
             harmony.PatchAll();
 
             if (ModLister.GetActiveModWithIdentifier("Jaxe.RimHUD") != null) 
-                AssemblyLoader.LoadAssembly(content, "AlphaMemesBiologicalReconstructorsRimhudCompat.dll", harmony);
+                AssemblyLoader.LoadAssembly(content, "BiologicalReconstructorsScannersPlusRimhudCompat.dll", harmony);
         }
     }
 }
