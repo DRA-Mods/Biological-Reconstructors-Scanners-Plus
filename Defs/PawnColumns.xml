@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <PawnColumnDef>
+    <defName>BiologicalReconstructorsScanStatus</defName>
+    <workerClass>BiologicalReconstructorsScannerInfo.PawnColumnWorker_IsScanned</workerClass>
+    <headerIcon>UI/Abilities/AM_AnalyzeCreature</headerIcon>
+    <headerAlwaysInteractable>true</headerAlwaysInteractable>
+    <paintable>false</paintable>
+  </PawnColumnDef>
+</Defs>

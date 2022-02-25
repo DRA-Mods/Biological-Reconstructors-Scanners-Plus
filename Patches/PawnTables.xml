@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="VFECore.PatchOperationToggableSequence">
+    <enabled>True</enabled>
+    <mods>
+      <li>Alpha Memes</li>
+    </mods>
+    <label>Add scan status column to wildlife tab:</label>
+    <operations>
+      <li Class="PatchOperationInsert">
+        <xpath>/Defs/PawnTableDef[defName="Wildlife"]/columns/li[text()="MentalState"]</xpath>
+        <value>
+          <li>BiologicalReconstructorsScanStatus</li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="VFECore.PatchOperationToggableSequence">
+    <enabled>True</enabled>
+    <mods>
+      <li>Alpha Memes</li>
+    </mods>
+    <label>Add scan status column to animals tab:</label>
+    <operations>
+      <!-- Can't place before GapTiny, as there's too many of them... Replace and re-add ReleaseAnimalToWild -->
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/PawnTableDef[defName="Animals"]/columns/li[text()="ReleaseAnimalToWild"]</xpath>
+        <value>
+          <li>ReleaseAnimalToWild</li>
+          <li>BiologicalReconstructorsScanStatus</li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

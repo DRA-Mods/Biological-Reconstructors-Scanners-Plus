@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>Dra.BiologicalReconstructorsScannersPlus</packageId>
+  <name>Biological Reconstructors - Scanners+</name>
+  <supportedVersions>
+    <li>1.3</li>
+  </supportedVersions>
+  <author>Sokyran, Hush</author>
+  <description>
+Do you like my mods? You can support me on Ko-Fi: https://ko-fi.com/sokyran
+
+Have you installed Alpha Memes and used the Biological Reconstructors meme? Have you been constantly checking all the animals in the area to check what you can and can't scan? Have you been annoyed that you can't easily tell if it's scanned or not and have to check the database?
+
+With this mod, you'll no longer have to bother looking up every single animal. Now the status of the scan will be shown after you select the animal, as well as inside of the wildlife tab and animals tab (can be disabled in Vanilla Expanded Framework settings).
+
+Additionally, if you use RimHUD you'll be able to add a new element displaying the scan status, or use one of the two provided presets.
+  </description>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases</downloadUrl>
+    </li>
+    <li>
+      <packageId>Sarg.AlphaMemes</packageId>
+      <displayName>Alpha Memes</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2661356814</steamWorkshopUrl>
+      <downloadUrl>https://github.com/juanosarg/AlphaMemes/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>brrainz.harmony</li>
+    <li>Sarg.AlphaMemes</li>
+  </loadAfter>
+</ModMetaData>
