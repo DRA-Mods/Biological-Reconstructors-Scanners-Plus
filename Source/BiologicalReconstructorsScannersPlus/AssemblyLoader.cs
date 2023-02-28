@@ -32,6 +32,6 @@ internal static class AssemblyLoader
         BiologicalReconstructorsScannersPlusMod.Harmony.PatchAll(result);
         var type = result.GetTypes().FirstOrDefault(x => x.Name == "StaticInit");
         if (type != null)
-            AccessTools.Method(type, "Init", new[] { typeof(Harmony) })?.Invoke(null, Array.Empty<object>());
+            AccessTools.DeclaredMethod(type, "Init", Type.EmptyTypes)?.Invoke(null, Array.Empty<object>());
     }
 }
