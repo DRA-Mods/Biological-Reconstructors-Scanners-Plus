@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset Version="1.11.3">
-  <Docked Height="255">
+  <Docked Height="302">
     <HStack>
       <Panel>
         <Row>
@@ -140,8 +140,8 @@
       </Panel>
     </HStack>
   </Docked>
-  <Floating Height="396">
-    <Panel>
+  <Floating Height="445">
+    <Panel FillHeight="true">
       <Row>
         <NameHeader />
       </Row>
