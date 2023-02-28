@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Preset Version="1.9.1">
-  <Docked Height="288" Width="85">
+<Preset Version="1.11.3">
+  <Docked Height="255">
     <HStack>
       <Panel>
         <Row>
@@ -46,20 +46,26 @@
         <Row>
           <NeedFood />
         </Row>
-        <Row>
-          <Need DefName="DBHThirst" />
-        </Row>
-        <Row>
+        <Row Targets="H">
           <Need DefName="Bladder" />
         </Row>
-        <Row>
+        <Row Targets="H">
           <Need DefName="Hygiene" />
         </Row>
-        <Row>
+        <Row Targets="HhC">
           <NeedRest />
         </Row>
-        <Row Targets="Hh">
+        <Row Targets="Cc">
+          <NeedEnergy />
+        </Row>
+        <Row Targets="H">
           <NeedRecreation />
+        </Row>
+        <Row Targets="H">
+          <NeedSuppression />
+        </Row>
+        <Row Targets="H">
+          <PrisonerInfo />
         </Row>
       </Panel>
       <Panel>
@@ -131,7 +137,7 @@
       </Panel>
     </HStack>
   </Docked>
-  <Floating Height="428" Width="320">
+  <Floating Height="396">
     <Panel>
       <Row>
         <NameHeader />
@@ -177,20 +183,26 @@
       <Row>
         <NeedFood />
       </Row>
-      <Row>
-        <Need DefName="DBHThirst" />
-      </Row>
-      <Row>
+      <Row Targets="H">
         <Need DefName="Bladder" />
       </Row>
-      <Row>
+      <Row Targets="H">
         <Need DefName="Hygiene" />
       </Row>
-      <Row>
+      <Row Targets="HhC">
         <NeedRest />
       </Row>
-      <Row Targets="Hh">
+      <Row Targets="Cc">
+        <NeedEnergy />
+      </Row>
+      <Row Targets="H">
         <NeedRecreation />
+      </Row>
+      <Row Targets="H">
+        <NeedSuppression />
+      </Row>
+      <Row Targets="H">
+        <PrisonerInfo />
       </Row>
       <Row>
         <Separator />
@@ -245,8 +257,11 @@
       <Row>
         <Queued />
       </Row>
-      <Row>
+      <Row Targets="Hh">
         <Equipped />
+      </Row>
+      <Row Targets="Cc">
+        <AlphaMemesIsScanned />
       </Row>
       <Row>
         <Carrying />
