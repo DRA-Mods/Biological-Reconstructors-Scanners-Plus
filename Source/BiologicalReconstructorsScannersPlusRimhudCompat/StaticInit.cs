@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
+using JetBrains.Annotations;
 using RimHUD.Data.Configuration;
 using RimHUD.Data.Extensions;
 using RimHUD.Data.Models;
@@ -14,6 +15,7 @@ public static class StaticInit
 {
     private const string ID = "AlphaMemesIsScanned";
 
+    [UsedImplicitly]
     public static void Init()
     {
         HudModel.Widgets.Add(ID, Value);
