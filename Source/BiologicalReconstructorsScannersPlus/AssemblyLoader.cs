@@ -6,30 +6,29 @@ using HarmonyLib;
 using Mono.Cecil;
 using Verse;
 
-namespace BiologicalReconstructorsScannersPlus
+namespace BiologicalReconstructorsScannersPlus;
+
+internal static class AssemblyLoader
 {
-    internal static class AssemblyLoader
+    public static void LoadAssembly(ModContentPack content, string targetAssembly)
     {
-        public static void LoadAssembly(ModContentPack content, string targetAssembly, Harmony harmony)
+        var assemblies = ModContentPack.GetAllFilesForModPreserveOrder(content, "Referenced/", f => f.ToLower() == ".dll");
+        var path = assemblies.FirstOrDefault(f => string.Equals(f.Item2.Name, targetAssembly, StringComparison.InvariantCultureIgnoreCase))?.Item2;
+
+        if (path == null)
         {
-            var assemblies = ModContentPack.GetAllFilesForModPreserveOrder(content, "Referenced/", f => f.ToLower() == ".dll");
-            var path = assemblies.FirstOrDefault(f => string.Equals(f.Item2.Name, targetAssembly, StringComparison.InvariantCultureIgnoreCase))?.Item2;
-
-            if (path == null)
-            {
-                Log.Error($"Could not find target assembly: {targetAssembly} - patch is not going to work!");
-                return;
-            }
-
-            var assembly = AssemblyDefinition.ReadAssembly(path.FullName);
-            using var stream = new MemoryStream();
-            assembly.Write(stream);
-
-            var result = AppDomain.CurrentDomain.Load(stream.ToArray());
-            harmony.PatchAll(result);
-            var type = result.GetTypes().FirstOrDefault(x => x.Name == "StaticInit");
-            if (type != null)
-                AccessTools.Method(type, "Init", new[] { typeof(Harmony) })?.Invoke(null, new object[] { harmony });
+            Log.Error($"Could not find target assembly: {targetAssembly} - patch is not going to work!");
+            return;
         }
+
+        var assembly = AssemblyDefinition.ReadAssembly(path.FullName);
+        using var stream = new MemoryStream();
+        assembly.Write(stream);
+
+        var result = AppDomain.CurrentDomain.Load(stream.ToArray());
+        BiologicalReconstructorsScannersPlusMod.Harmony.PatchAll(result);
+        var type = result.GetTypes().FirstOrDefault(x => x.Name == "StaticInit");
+        if (type != null)
+            AccessTools.Method(type, "Init", new[] { typeof(Harmony) })?.Invoke(null, Array.Empty<object>());
     }
 }
