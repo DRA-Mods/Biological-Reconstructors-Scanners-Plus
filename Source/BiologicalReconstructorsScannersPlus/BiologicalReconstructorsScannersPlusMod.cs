@@ -15,6 +15,6 @@ public class BiologicalReconstructorsScannersPlusMod : Mod
         Harmony.PatchAll();
 
         if (ModLister.GetActiveModWithIdentifier("Jaxe.RimHUD") != null)
-            AssemblyLoader.LoadAssembly(content, "BiologicalReconstructorsScannersPlusRimhudCompat");
+            AssemblyLoader.LoadAssembly(content, "BiologicalReconstructorsScannersPlusRimhudCompat", "RimHUD");
     }
 }

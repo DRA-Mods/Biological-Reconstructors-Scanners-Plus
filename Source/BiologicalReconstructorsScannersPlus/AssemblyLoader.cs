@@ -10,14 +10,17 @@ namespace BiologicalReconstructorsScannersPlus;
 
 internal static class AssemblyLoader
 {
-    public static void LoadAssembly(ModContentPack content, string targetAssembly)
+    public static void LoadAssembly(ModContentPack content, string targetAssembly, string targetModCompat)
     {
+        if (!targetAssembly.EndsWith(".dll"))
+            targetAssembly += ".dll";
+        
         var assemblies = ModContentPack.GetAllFilesForModPreserveOrder(content, "Referenced/", f => f.ToLower() == ".dll");
         var path = assemblies.FirstOrDefault(f => string.Equals(f.Item2.Name, targetAssembly, StringComparison.InvariantCultureIgnoreCase))?.Item2;
 
         if (path == null)
         {
-            Log.Error($"Could not find target assembly: {targetAssembly} - patch is not going to work!");
+            Log.Error($"Could not find target assembly: {targetAssembly} - {targetModCompat} patch is not going to work!");
             return;
         }
 
