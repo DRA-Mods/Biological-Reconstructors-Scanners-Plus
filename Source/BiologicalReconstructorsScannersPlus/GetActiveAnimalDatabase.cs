@@ -2,39 +2,39 @@
 using AlphaMemes;
 using Verse;
 
-namespace BiologicalReconstructorsScannersPlus
+namespace BiologicalReconstructorsScannersPlus;
+
+public static class GetActiveAnimalDatabase
 {
-    public static class GetActiveAnimalDatabase
+    private static Building_AnimalDatabase cached;
+    private static int lastChecked = -1;
+
+    public static Building_AnimalDatabase GetDatabase()
     {
-        private static Building_AnimalDatabase cached;
-        private static int lastChecked = -1;
-
-        public static Building_AnimalDatabase GetDatabase()
-        {
-            if (cached?.Destroyed != true && lastChecked + 1000 >= Find.TickManager.TicksGame) 
-                return cached;
-            
-            lastChecked = Find.TickManager.TicksGame;
-            foreach (var map in Current.Game.Maps)
-            {
-                if (map.listerBuildings.AllBuildingsColonistOfDef(InternalDefOf.AM_AnimalDatabase).FirstOrDefault() is not Building_AnimalDatabase building) 
-                    continue;
-
-                cached = building;
-                return cached;
-            }
-
+        if ((cached == null || (cached.Spawned && !cached.Destroyed)) && lastChecked + 1000 >= Find.TickManager.TicksGame) 
             return cached;
-        }
 
-        public static bool? IsInDatabase(Pawn pawn)
+        lastChecked = Find.TickManager.TicksGame;
+        foreach (var map in Current.Game.Maps)
         {
-            var props = pawn.RaceProps;
-            if (!props.Animal || props.Dryad)
-                return null;
+            if (map.listerBuildings.AllBuildingsColonistOfDef(InternalDefOf.AM_AnimalDatabase).FirstOrDefault() is not Building_AnimalDatabase building) 
+                continue;
 
-            var database = GetDatabase();
-            return database?.analyzedAnimalList.Contains(pawn.kindDef);
+            cached = building;
+            return building;
         }
+
+        cached = null;
+        return null;
+    }
+
+    public static bool? IsInDatabase(Pawn pawn)
+    {
+        var props = pawn.RaceProps;
+        if (!props.Animal || props.Dryad)
+            return null;
+
+        var database = GetDatabase();
+        return database?.analyzedAnimalList.Contains(pawn.kindDef);
     }
 }
